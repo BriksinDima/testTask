@@ -30,7 +30,6 @@ public class HasValueEnumTypeHandler<E extends Enum<E> & HasValue> extends
     @Override
     public void setNonNullParameter(PreparedStatement ps, int i, E parameter,
                                     JdbcType jdbcType) throws SQLException {
-        System.out.println(parameter.getValue());
         ps.setString(i, ((HasValue) parameter).getValue());
     }
 
@@ -43,7 +42,6 @@ public class HasValueEnumTypeHandler<E extends Enum<E> & HasValue> extends
         }
 
         for (E enm : enums) {
-            System.out.println(value + ":" +enm.getValue());
             if (value.trim().equals(enm.getValue())) {
                 return enm;
             }

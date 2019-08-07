@@ -46,21 +46,16 @@ public class DialogDetails extends BasicBean{
     }
 
     public void update(){
-        System.out.println(this.person);
-        System.out.println(this.editPersonId);
         service.updatePerson(this.person, this.editPersonId);
         reload();
     }
 
     public void editAction() {
-
         Person person = service.getPersonById(editPersonId);
-        System.out.println(person);
         this.person = person;
     }
 
     public void delete(){
-        System.out.println(person);
         service.deletePerson(editPersonId);
         reload();
     }

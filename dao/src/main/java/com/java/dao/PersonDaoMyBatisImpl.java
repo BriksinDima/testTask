@@ -51,6 +51,5 @@ public class PersonDaoMyBatisImpl implements PersonDao {
         session.getMapper(PersonMapper.class).updatePerson(person);
         session.commit();
         session.close();
-        System.out.println(person);
     }
 }
