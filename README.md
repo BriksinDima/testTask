@@ -1,0 +1,3 @@
+Postgres
+MyBatis
+PrimeFaces

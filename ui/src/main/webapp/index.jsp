@@ -1,0 +1,1 @@
+<% response.sendRedirect("/test-ui/index.xhtml"); %>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <typeAliases>
+        <typeAlias alias="Person"        type="com.java.model.Person" />
+        <typeAlias alias="UUID"            type="java.util.UUID" />
+        <typeAlias alias="UUIDTypeHandler" type="com.java.handlers.UUIDTypeHandler" />
+
+        <typeAlias alias="Gender"        type="com.java.model.Gender" />
+        <typeAlias alias="HasValueEnumTypeHandler" type="com.java.handlers.HasValueEnumTypeHandler" />
+
+    </typeAliases>
+
+    <typeHandlers>
+        <package name="com.java.handlers.UUIDTypeHandler"/>
+        <package name="com.java.handlers.HasValueEnumTypeHandler"/>
+    </typeHandlers>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="JNDI">
+                <property name="data_source" value="java:/PostgresDSS"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <mapper class="com.java.mappers.PersonMapper"/>
+    </mappers>
+</configuration>

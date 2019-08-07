@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>JavaCodeGeeks</title>
+</h:head>
+
+<h:body>
+
+
+
+    <script type="text/javascript">
+    PrimeFaces.locales['es'] = {
+        closeText: 'Cerrar',
+        prevText: 'Anterior',
+        nextText: 'Siguiente',
+        monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+        monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+        dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+        dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+        dayNamesMin: ['D', 'L', 'M', 'X', 'J', 'V', 'S'],
+        weekHeader: 'Semana',
+        firstDayOfWeek: 1,
+        isRTL: false,
+        showMonthAfterYear: false,
+        yearSuffix: '',
+        timeOnlyTitle: 'Sólo hora',
+        timeText: 'Tiempo',
+        hourText: 'Hora',
+        minuteText: 'Minuto',
+        secondText: 'Segundo',
+        currentText: 'Fecha actual',
+        ampm: false,
+        month: 'Mes',
+        week: 'Semana',
+        day: 'Día',
+        allDayText: 'Todo el día'
+    };
+</script>
+
+    <script type="text/javascript">
+        //<![CDATA[
+        function dateTemplateFunc(date) {
+            return '<span style="background-color:' + ((date.day < 21 && date.day > 10) ? '#81C784' : 'inherit') + ';border-radius:50%;padding: .25em;width: 1.75em; height:1.75em; display:block;">' + date.day + '</span>';
+        }
+        //]]>
+    </script>
+
+    <style type="text/css">
+    .value {
+        font-weight: bold;
+    }
+    .hide{
+        display:none;
+    }
+    </style>
+
+    <h:form>
+        <p:dataTable var="person" value="#{dtBasicView.persons}">
+
+            <p:column headerText="Id" styleClass="hide">
+                <h:outputText value="#{person.id}"/>
+            </p:column>
+
+            <p:column headerText="ФИО">
+                <h:outputText value="#{person.lastName}"/>
+                <h:outputText value="#{person.firstName}"/>
+                <h:outputText value="#{person.secondName}"/>
+            </p:column>
+            <p:column headerText="Дата рождения" sortBy="#{person.birthDate}">
+                <h:outputText value="#{person.birthDate}">
+                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                </h:outputText>
+            </p:column>
+
+            <p:column headerText="Пол">
+                <h:outputText value="#{genderBean.getValue(person.gender)}"/>
+            </p:column>
+
+            <p:column headerText="">
+                <h:commandButton ajax="true" value="Редактировать" action="#{detailsDialog.editAction}"  onclick="PF('dlg2').show();">
+                    <f:setPropertyActionListener target="#{detailsDialog.editPersonId}" value="#{person.id}" />
+                    <f:ajax execute="@form" render="detailsDialog" />
+                </h:commandButton>
+            </p:column>
+        </p:dataTable>
+    </h:form>
+    <p:commandButton value="Добавить" type="button" onclick="PF('dlg3').show();"/>
+    <p:dialog header="Добавить данные в таблицу" widgetVar="dlg3" showEffect="explode" hideEffect="bounce" weight="300" height="300">
+        <h:form>
+            <p:panelGrid class="ui-noborder">
+            <p:row>
+                <p:column>
+                    <p:outputLabel  value="Фамилия"  />
+                </p:column>
+                <p:column>
+                    <p:inputText  value="#{saveData.person.lastName}" />
+                </p:column>
+            </p:row>
+            <p:row>
+                <p:column>
+                    <p:outputLabel  value="Имя"  />
+                </p:column>
+                <p:column>
+                    <p:inputText   value="#{saveData.person.firstName}" />
+                </p:column>
+            </p:row>
+            <p:row>
+                <p:column>
+                    <p:outputLabel  value="Отчество"  />
+                </p:column>
+                <p:column>
+                    <p:inputText  value="#{saveData.person.secondName}" />
+                </p:column>
+            </p:row>
+            <p:row>
+                <p:column>
+                    <p:outputLabel  value="Пол"  />
+                </p:column>
+                <p:column>
+                    <p:selectOneRadio id="console" value="#{saveData.person.gender}" unselectable="true">
+                        <f:selectItem itemLabel="Мужской" itemValue="MALE" />
+                        <f:selectItem itemLabel="Женский" itemValue="FEMALE" />
+                    </p:selectOneRadio>
+                </p:column>
+            </p:row>
+            <p:row>
+                <p:column>
+                    <p:outputLabel for="popup" value="Дата рождения"  />
+                </p:column>
+                <p:column>
+                    <p:datePicker id="popup" value="#{saveData.person.birthDate}" />
+                </p:column>
+            </p:row>
+            </p:panelGrid>
+            <p:commandButton ajax="false" value="Сохранить" icon="ui-icon-disk" action="#{saveData.save}"/>
+        </h:form>
+
+    </p:dialog>
+
+
+    <p:dialog   header="Редактирование" widgetVar="dlg2" showEffect="explode" hideEffect="bounce" weight="300" height="300">
+        <h:form  id="detailsDialog"  >
+            <p:panelGrid class="ui-noborder">
+                <p:row styleClass="hide" >
+                    <p:column >
+                        <p:outputLabel  value="id"  />
+                    </p:column>
+                    <p:column>
+                        <p:inputText  value="#{detailsDialog.editPersonId}"  >
+                            <p:ajax event="change" global="false"/>
+                        </p:inputText>
+                    </p:column>
+                </p:row>
+            <p:row>
+                <p:column>
+                    <p:outputLabel  value="Фамилия"  />
+                </p:column>
+                <p:column>
+                    <p:inputText  value="#{detailsDialog.person.lastName}" >
+                        <p:ajax event="change" global="false"/>
+                    </p:inputText>
+                </p:column>
+            </p:row>
+            <p:row>
+                <p:column>
+                    <p:outputLabel  value="Имя"  />
+                </p:column>
+                <p:column>
+                    <p:inputText value="#{detailsDialog.person.firstName}">
+                        <p:ajax event="change" global="false"/>
+                    </p:inputText>
+                </p:column>
+            </p:row>
+            <p:row>
+                <p:column>
+                    <p:outputLabel  value="Отчество"  />
+                </p:column>
+                <p:column>
+                    <p:inputText value="#{detailsDialog.person.secondName}">
+                        <p:ajax event="change" global="false"/>
+                    </p:inputText>
+                </p:column>
+            </p:row>
+            <p:row>
+            <p:column>
+                <p:outputLabel for="popup" value="Дата рождения" />
+            </p:column>
+            <p:column>
+                <p:datePicker id="popup" value="#{detailsDialog.person.birthDate}">
+                    <p:ajax event="change" global="false"/>
+                </p:datePicker>
+            </p:column>
+            </p:row>
+            <p:row>
+                <p:column>
+                    <p:commandButton  value="Обновить" icon="ui-icon-disk" action="#{detailsDialog.update}"/>
+                </p:column>
+            </p:row>
+            </p:panelGrid>
+        </h:form>
+        <h:form>
+            <p:panelGrid class="ui-noborder">
+                <p:row>
+                    <p:column>
+                        <h:commandButton ajax="false" value="Удалить " immediate="true" action="#{detailsDialog.delete}">
+                            <f:setPropertyActionListener target="#{detailsDialog.editPersonId}" value="#{detailsDialog.editPersonId}" />
+                        </h:commandButton>
+                    </p:column>
+                </p:row>
+            </p:panelGrid>
+        </h:form>
+    </p:dialog>
+</h:body>
+</html>
