@@ -34,9 +34,6 @@ public class DialogCreation extends BasicBean implements Serializable {
     }
 
     public void save() throws IOException {
-        Gender gender = this.person.getGender();
-        Person person = this.person;
-        person.setGender(gender);
         service.savePerson(person);
         reload();
     }
