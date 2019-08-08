@@ -3,9 +3,14 @@ package com.java.model;
 import java.util.Date;
 import java.util.Objects;
 import java.util.UUID;
-
+/**
+ * Represents a person
+ * */
 public class Person {
 
+    /**
+     *  Represents a person's unique identifier
+     */
     private UUID Id;
 
     private String firstName;
@@ -16,12 +21,23 @@ public class Person {
 
     private Date birthDate;
 
+    /**
+     *  Represents a person's gender
+     */
     private Gender gender;
 
+    /** Gets the person’s unique identifier.
+     * @return A UUID representing the person’s unique identifier.
+     *
+     */
     public UUID getId() {
         return Id;
     }
 
+    /** Sets the person’s unique identifier.
+     * @param id A UUID containing the person’s unique identifier.
+     *
+     */
     public void setId(UUID id) {
         Id = id;
     }
@@ -58,17 +74,36 @@ public class Person {
         this.birthDate = birthDate;
     }
 
+    /** Gets the person’s gender.
+     * @return A Gender representing the person’s gender.
+     *
+     */
     public Gender getGender() {
         return gender;
     }
 
+    /** Sets the person’s gender.
+     * @param gender A Gender containing the person’s gender.
+     *
+     */
     public void setGender(Gender gender) {
         this.gender = gender;
     }
 
+    /** Creates a person without params
+     *
+     */
     public Person() {
     }
 
+    /** Creates a person with the specified name, gender, birthday.
+     * @param id The person’s id.
+     * @param firstName The person’s first name.
+     * @param lastName The person’s last name.
+     * @param secondName The person’s second name.
+     * @param birthDate The person’s birthday.
+     * @param gender The person’s gender.
+     */
     public Person(UUID id, String firstName, String secondName, String lastName, Date birthDate, Gender gender) {
         Id = id;
         this.firstName = firstName;
