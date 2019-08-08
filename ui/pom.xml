@@ -9,12 +9,12 @@
     </parent>
     <packaging>war</packaging>
     <modelVersion>4.0.0</modelVersion>
+
     <artifactId>rest</artifactId>
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.sun.faces</groupId>
@@ -53,7 +53,8 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <configuration>
                     <webXml>src\main\webapp\WEB-INF\web.xml</webXml>
-                </configuration>
+                    <packagingIncludes>**/*.xml,**/*.properties,**/*.class,**/*.html,**/*.xhtml,**/*.png,**/*.css,**/*.js,**/*.jsp</packagingIncludes>
+               </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
