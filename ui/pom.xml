@@ -27,6 +27,7 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
+            <version>3.0.1</version>
         </dependency>
         <dependency>
             <groupId>com.test.task</groupId>
@@ -49,8 +50,8 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <configuration>
                     <webXml>src\main\webapp\WEB-INF\web.xml</webXml>
-                    <packagingIncludes>**/*.xml,**/*.properties,**/*.class,**/*.html,**/*.xhtml,**/*.png,**/*.css,**/*.js,**/*.jsp</packagingIncludes>
-               </configuration>
+                 <!--   <packagingIncludes>**/*.xml,**/*.properties,**/*.class,**/*.html,**/*.xhtml,**/*.png,**/*.css,**/*.js,**/*.jsp</packagingIncludes>
+               --> </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
