@@ -1,7 +1,6 @@
 package com.java.dao;
 
 import com.java.mappers.PersonMapper;
-import com.java.model.Gender;
 import com.java.model.Person;
 import org.apache.ibatis.session.SqlSession;
 
