@@ -8,6 +8,9 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import java.io.IOException;
 import java.io.Reader;
 
+/**
+ * Represents a singleton class for getting connection to db
+ * */
 public class SessionManager {
     private static SessionManager ourInstance = new SessionManager();
 

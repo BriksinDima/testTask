@@ -7,6 +7,10 @@ import org.apache.ibatis.session.SqlSession;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * Represents an implementation  of
+ * interface dao person for mybatis library
+ * */
 public class PersonDaoMyBatisImpl implements PersonDao {
 
     private SessionManager sessionManager = SessionManager.getInstance();

@@ -4,6 +4,9 @@ import com.java.model.Person;
 
 import java.util.List;
 
+/**
+ * Represents an interface of dao person
+ * */
 public interface PersonDao {
 
     List<Person> findAll();

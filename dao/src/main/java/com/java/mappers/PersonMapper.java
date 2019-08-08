@@ -8,6 +8,9 @@ import org.apache.ibatis.annotations.*;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * Represents an interface with queries to person table
+ * */
 public interface PersonMapper {
 
     @Results(id = "personResult", value = {

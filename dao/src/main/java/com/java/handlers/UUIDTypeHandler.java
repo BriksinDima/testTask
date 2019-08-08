@@ -12,6 +12,11 @@ import org.apache.ibatis.type.JdbcType;
 import org.apache.ibatis.type.MappedJdbcTypes;
 import org.apache.ibatis.type.MappedTypes;
 
+
+
+/**
+ * Represents a handler class for mapping java UUID to UUID db type and backward
+ * */
 @MappedJdbcTypes(JdbcType.OTHER)
 @MappedTypes(UUID.class)
 public class UUIDTypeHandler extends BaseTypeHandler {

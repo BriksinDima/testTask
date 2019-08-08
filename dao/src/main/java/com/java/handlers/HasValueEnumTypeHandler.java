@@ -11,6 +11,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+
+/**
+ * Represents a handler class for mapping java enumeration(Enum) to string db type
+ * */
 @MappedTypes(Gender.class)
 public class HasValueEnumTypeHandler<E extends Enum<E> & HasValue> extends
         BaseTypeHandler<E> {
@@ -30,7 +34,7 @@ public class HasValueEnumTypeHandler<E extends Enum<E> & HasValue> extends
     @Override
     public void setNonNullParameter(PreparedStatement ps, int i, E parameter,
                                     JdbcType jdbcType) throws SQLException {
-        ps.setString(i, ((HasValue) parameter).getValue());
+        ps.setString(i, parameter.getValue());
     }
 
     @Override
@@ -46,7 +50,7 @@ public class HasValueEnumTypeHandler<E extends Enum<E> & HasValue> extends
                 return enm;
             }
         }
-        throw new IllegalArgumentException("Cannot convert 1 "
+        throw new IllegalArgumentException("Cannot convert "
                 + value + " to " + type.getSimpleName());
     }
 
@@ -61,7 +65,7 @@ public class HasValueEnumTypeHandler<E extends Enum<E> & HasValue> extends
                 return enm;
             }
         }
-        throw new IllegalArgumentException("Cannot convert 2" + value + " to " + type.getSimpleName());
+        throw new IllegalArgumentException("Cannot convert " + value + " to " + type.getSimpleName());
     }
 
     @Override
@@ -75,7 +79,7 @@ public class HasValueEnumTypeHandler<E extends Enum<E> & HasValue> extends
                 return enm;
             }
         }
-        throw new IllegalArgumentException("Cannot convert 3" + value + " to " + type.getSimpleName());
+        throw new IllegalArgumentException("Cannot convert " + value + " to " + type.getSimpleName());
     }
 
 
