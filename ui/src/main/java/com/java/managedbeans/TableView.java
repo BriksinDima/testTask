@@ -8,9 +8,10 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.List;
-
+/**
+ * Represents bean class for control data in the table on UI layer
+ */
 @ManagedBean(name="dtBasicView")
 @ViewScoped
 public class TableView implements Serializable {

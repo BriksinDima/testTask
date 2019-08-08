@@ -1,9 +1,7 @@
 package com.java.managedbeans;
 
-import com.java.model.Gender;
 import com.java.model.Person;
 import com.java.service.PersonService;
-
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -11,6 +9,9 @@ import javax.faces.bean.ViewScoped;
 import java.io.IOException;
 import java.io.Serializable;
 
+/**
+ * Represents bean class for adding new person in dialog on UI layer
+ */
 @ManagedBean(name="saveData")
 @ViewScoped
 public class DialogCreation extends BasicBean implements Serializable {

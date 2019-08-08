@@ -9,6 +9,9 @@ import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import java.util.List;
 
+/**
+ * Represents bean class for getting person data
+ * */
 @ManagedBean(name = "personService")
 @ApplicationScoped
 public class PersonService {

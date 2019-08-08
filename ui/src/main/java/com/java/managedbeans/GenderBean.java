@@ -3,8 +3,9 @@ package com.java.managedbeans;
 import com.java.model.Gender;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.model.SelectItem;
-
+/**
+ * Represents bean class for showing current value from Gender enumeration on UI layer
+ */
 @ManagedBean(name="genderBean")
 public class GenderBean {
     public GenderBean() {
